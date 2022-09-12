@@ -3,6 +3,7 @@ const fs = require('fs');
 const axios = require("axios");
 const inquirer = require("inquirer");
 const markdown = require("./utils/generateMarkdown");
+path = require('path');
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -11,12 +12,8 @@ const questions = [
         name: "title"
     },
     {
-        message: "Please provide a table on content",
-        name: "table of content"
-    },
-    {
         message: "What is the name of the user?",
-        name: "userName"
+        name: "username"
     },
     {
         message: "Please provide a description of the project",
@@ -43,24 +40,20 @@ const questions = [
         name: "test"
     },
     {
-        message: "What is the user github email address?",
-        name: "GitHub user email"
+        message: "What is your email address?",
+        name: "email"
     },
-    {
-        message: "Please provide a profile picture",
-        name: "GitHub profile picture"
-    }
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) { }
+function writeToFile(fileName, data) { fs.writeFileSync(path.join(process.cwd(), fileName), data); }
 
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions)
         .then((inquirerResponse, data) => {
             console.log("Making ReadMe");
-            fs.writeFileSync("ReadMe.md", inquirerResponse, data);
+            writeToFile("README.md", markdown({ ...inquirerResponse }))
         })
         .catch((err) => {
             console.log(err);

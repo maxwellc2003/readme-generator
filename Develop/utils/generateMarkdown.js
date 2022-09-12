@@ -1,44 +1,41 @@
 function generateMarkdown(response) {
-  return `
+    return `
 
 # ${response.title}
 
 # Table of Content
--[description](#description)
--[installation](#installation)
--[usage](#usage)
--[licenses](#licenses)
--[contribution](#contribution)
--[test](#test)
--[username](#username)
--[profile](#profile)
+-[Username](#username)
+-[Description](#description)
+-[Installation](#installation)
+-[Usage](#usage)
+-[Licenses](#licenses)
+-[Contribution](#contribution)
+-[Test](#test)
+-[Contact](#email)
 
-${response.username}
-##username:
+## Username:
+[github.com/${response.username}](#github.com/${response.username})
 
-    ${response.description}
-##description:
+## Description:
+${response.description}
 
-    ${response.installation}
-##installation:
+## Installation:
+${response.installation}
 
-    ${response.usage}
-##usage:
+## Usage:
+${response.usage}
 
-    ${response.licenses}
-##licenses:
+## Licenses:
+${response.licenses}
 
-    ${response.contribution}
-##contribution:
+## Contribution:
+${response.contribution}
 
-    ${response.test}
-##test:
+## Test:
+${response.test}
 
-    ${response.email}
-##email:
-
-    ${response.profile}
-##profile:
+## Questions?
+${response.email}
 `;
 }
 
